@@ -1,14 +1,8 @@
-package com.example.demo.dao;
+package com.example.demo.repository;
 
 import com.example.demo.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import java.util.List;
 
 // https://www.journaldev.com/17379/jpa-entitymanager-hibernate -> Reference link if want more details
 

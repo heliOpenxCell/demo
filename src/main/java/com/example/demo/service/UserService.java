@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.UserRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.dto.ApiDTOBuilder;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.model.User;
