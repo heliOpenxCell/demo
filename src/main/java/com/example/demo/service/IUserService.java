@@ -8,12 +8,12 @@ public interface IUserService {
 
     public List<UserDTO> getAllUsers();
 
-    public UserDTO getUserByUsername(String username);
+    public UserDTO       getUserByUsername(String username);
 
-    public void createUser(UserDTO user);
+    public void          createUser(UserDTO user);
 
-    public void updateUser(UserDTO user);
+    public void          updateUser(UserDTO user);
 
-    public void deleteUser(String username);
+    public UserDTO       deleteUser(String username);
 
 }

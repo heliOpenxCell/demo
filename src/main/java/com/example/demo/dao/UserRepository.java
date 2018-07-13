@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.User;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +13,10 @@ import java.util.List;
 // https://www.journaldev.com/17379/jpa-entitymanager-hibernate -> Reference link if want more details
 
 @Repository
-public class UserDAO implements IUserDAO {
+public interface UserRepository extends CrudRepository<User,String> {
 
-        @PersistenceContext
+
+       /* @PersistenceContext
         EntityManager em;//JPA EntityManager is used to access a database in a particular application. It is used to manage persistent entity instances, to find entities by their primary key identity(As here is Username), and to query over all entities.
 
         @Override
@@ -48,5 +50,5 @@ public class UserDAO implements IUserDAO {
         public void deleteUser(String username) {
             User user = this.getUser(username);
             em.remove(user);//Remove the entity instance.
-        }
+        }*/
 }

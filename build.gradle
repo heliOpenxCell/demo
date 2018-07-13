@@ -29,8 +29,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
-	compile('org.hibernate:hibernate-core:5.0.12.Final')
-	compile('org.hibernate:hibernate-entitymanager:5.0.2.Final')
 	compile('javax.xml.bind:jaxb-api:2.2.11')
 	compile('org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE')
 	compile('com.sun.xml.bind:jaxb-core:2.2.11')
@@ -38,7 +36,4 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-
-
-
 }

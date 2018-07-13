@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.IUserDAO;
-import com.example.demo.dao.UserDAO;
+import com.example.demo.dao.UserRepository;
 import com.example.demo.dto.ApiDTOBuilder;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.model.User;
@@ -17,42 +16,52 @@ import java.util.List;
 public class UserService implements IUserService {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userRepository;
 
     @Override
     public List<UserDTO> getAllUsers() {
 
-        List<User> entities = userDAO.getUsers();
+        List<User> entities =new ArrayList<>();
+        userRepository.findAll().forEach(entities::add);
+
         List<UserDTO> users = new ArrayList<UserDTO>();//Will never use directly User Object, will be using Tranferable objects
 
         Iterator<User> iterator = entities.iterator();
 
-        while(iterator.hasNext()) {
+       while(iterator.hasNext()) {
             User user = iterator.next();
             users.add(ApiDTOBuilder.userToUserDTO(user));//We are building UserDTO object.
         }
         return users;
     }
-
+    //The purpose of the class is to provide a type-level solution for representing optional values instead of using null references.
     @Override
     public UserDTO getUserByUsername(String username) {
-        User user = userDAO.getUser(username);
-        return ApiDTOBuilder.userToUserDTO(user);
+        if(userRepository.findById(username).isPresent()){
+            User user = userRepository.findById(username).get();
+            return ApiDTOBuilder.userToUserDTO(user);
+        }
+
+        return null;
     }
 
     @Override
     public void createUser(UserDTO user) {
-        userDAO.createUser(ApiDTOBuilder.userDTOToUser(user));
+        userRepository.save(ApiDTOBuilder.userDTOToUser(user));
     }
 
     @Override
     public void updateUser(UserDTO user) {
-        userDAO.updateUser(ApiDTOBuilder.userDTOToUser(user));
-
+        userRepository.save(ApiDTOBuilder.userDTOToUser(user));
     }
 
     @Override
-    public void deleteUser(String username) {
-        userDAO.deleteUser(username);
+    public UserDTO deleteUser(String username) {
+        if(userRepository.findById(username).isPresent()){
+            User user = userRepository.findById(username).get();
+            userRepository.delete(user);
+            return ApiDTOBuilder.userToUserDTO(user);
+        }
+        return null;
     }
 }

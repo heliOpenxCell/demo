@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Entity
 @Table (name =  "user_tbl")
-
 public class User {
 
     @Id
