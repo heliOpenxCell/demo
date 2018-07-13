@@ -13,10 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin // To interact with different IP addresses. If you don't apply this annotation then it will
-
-//Here you see UserController is using Service class to get the all services.
-
+@CrossOrigin
 public class UserController {
 
     @Autowired
